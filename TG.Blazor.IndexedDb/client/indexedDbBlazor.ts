@@ -97,6 +97,32 @@ export class IndexedDbManager {
         return results;
     }
 
+    public getPaginatedRecords = async (searchData: IIndexSearch, offset: number, count: number): Promise<any> => {
+        const tx = this.getTransaction(this.dbInstance, searchData.storename, 'readonly');
+
+        let results: any[] = [];
+        let position: number = 0;
+
+        tx.objectStore(searchData.storename)
+            .index(searchData.indexName)
+            .iterateCursor(cursor => {
+                if (!cursor) {
+                    return;
+                }
+
+                if (offset <= position && position < (offset + count)) {
+                    results.push(cursor.value);
+                }
+
+                ++position;
+                cursor.continue();
+            });
+
+        await tx.complete;
+
+        return results;
+    }
+
     public clearStore = async (storeName: string): Promise<string> => {
         
         const tx = this.getTransaction(this.dbInstance, storeName, 'readwrite');

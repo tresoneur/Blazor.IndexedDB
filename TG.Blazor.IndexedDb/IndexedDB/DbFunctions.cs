@@ -10,6 +10,7 @@
         public const string AddRecord = "addRecord";
         public const string UpdateRecord = "updateRecord";
         public const string GetRecords = "getRecords";
+        public const string GetPaginatedRecords = "getPaginatedRecords";
         public const string OpenDb = "openDb";
         public const string DeleteRecord = "deleteRecord";
         public const string GetRecordById = "getRecordById";

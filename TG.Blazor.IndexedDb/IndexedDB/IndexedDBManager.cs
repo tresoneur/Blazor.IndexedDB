@@ -178,6 +178,31 @@ namespace TG.Blazor.IndexedDB
         }
 
         /// <summary>
+        /// Gets paginated records from a given store.
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="index">The name of the store and the index to iterate over to retrieve the records. <see cref="StoreIndexQuery{TInput}.QueryValue"/> and <see cref="StoreIndexQuery{TInput}.AllMatching"/> are ignored.</param>
+        /// <returns></returns>
+        public async Task<List<TResult>> GetPaginatedRecords<TResult>(StoreIndexQuery<object> index, int offset, int count)
+        {
+            await EnsureDbOpen();
+            try
+            {
+                var results = await CallJavascript<List<TResult>>(DbFunctions.GetPaginatedRecords, index, offset, count);
+
+                RaiseNotification(IndexDBActionOutCome.Successful, $"Retrieved {results.Count} records from {index.Storename}");
+
+                return results;
+            }
+            catch (JSException jse)
+            {
+                RaiseNotification(IndexDBActionOutCome.Failed, jse.Message);
+                return default;
+            }
+
+        }
+
+        /// <summary>
         /// Retrieve a record by id
         /// </summary>
         /// <typeparam name="TInput"></typeparam>
