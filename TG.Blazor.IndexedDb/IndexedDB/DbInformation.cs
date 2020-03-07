@@ -1,5 +1,5 @@
 ﻿
-namespace TG.Blazor.IndexedDB
+namespace SpotifyService.IndexedDB
 {
     public class DbInformation
     {

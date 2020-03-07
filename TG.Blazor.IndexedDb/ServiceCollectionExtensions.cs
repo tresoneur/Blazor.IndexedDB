@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace TG.Blazor.IndexedDB
+namespace SpotifyService.IndexedDB
 {
     public static class ServiceCollectionExtensions
     {
@@ -18,7 +18,7 @@ namespace TG.Blazor.IndexedDB
             options(dbStore);
 
             services.TryAddSingleton(dbStore);
-            services.AddScoped<IndexedDBManager , IndexedDBManager>();
+            services.AddScoped<IndexedDBManager, IndexedDBManager>();
 
             return services;
         }

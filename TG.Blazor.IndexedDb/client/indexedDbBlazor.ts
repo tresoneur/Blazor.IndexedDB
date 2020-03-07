@@ -103,15 +103,23 @@ export class IndexedDbManager {
         let results: any[] = [];
         let position: number = 0;
 
-        tx.objectStore(searchData.storename)
-            .index(searchData.indexName)
+        const store = tx.objectStore(searchData.storename);
+
+        console.log("SpotifyService.IndexedDB: Store indexname: " + searchData.indexName + "is null: " + (searchData.indexName === null ? "true" : "false") + "is kinda null: " + (searchData.indexName == null ? "true" : "false"));
+
+        ((searchData.indexName !== null) ? store.index(searchData.indexName) : store)
             .iterateCursor(cursor => {
                 if (!cursor) {
+                    console.log("!cursor");
                     return;
                 }
 
                 if (offset <= position && position < (offset + count)) {
+                    console.log("position: " + position); console.log(cursor.value);
                     results.push(cursor.value);
+                }
+                else if (position >= (offset + count)) {
+                    return;
                 }
 
                 ++position;

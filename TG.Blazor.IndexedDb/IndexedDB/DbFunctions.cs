@@ -1,4 +1,4 @@
-﻿namespace TG.Blazor.IndexedDB
+﻿namespace SpotifyService.IndexedDB
 {
     /// <summary>
     /// Constants defining the Javascript functions that can be called.

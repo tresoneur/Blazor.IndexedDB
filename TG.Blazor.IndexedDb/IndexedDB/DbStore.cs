@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TG.Blazor.IndexedDB
+namespace SpotifyService.IndexedDB
 {
     /// <summary>
     /// Used to define the database and associated stores

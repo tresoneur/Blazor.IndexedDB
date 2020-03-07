@@ -1,4 +1,4 @@
-﻿namespace TG.Blazor.IndexedDB
+﻿namespace SpotifyService.IndexedDB
 {
     /// <summary>
     /// Class used for running an index query.

@@ -1,4 +1,4 @@
-﻿namespace TG.Blazor.IndexedDB
+﻿namespace SpotifyService.IndexedDB
 {
     /// <summary>
     /// This class is used when adding or updating a record.

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 
-namespace TG.Blazor.IndexedDB
+namespace SpotifyService.IndexedDB
 {
     /// <summary>
     /// Provides functionality for accessing IndexedDB from Blazor application
@@ -181,14 +181,20 @@ namespace TG.Blazor.IndexedDB
         /// Gets paginated records from a given store.
         /// </summary>
         /// <typeparam name="TResult"></typeparam>
-        /// <param name="index">The name of the store and the index to iterate over to retrieve the records. <see cref="StoreIndexQuery{TInput}.QueryValue"/> and <see cref="StoreIndexQuery{TInput}.AllMatching"/> are ignored.</param>
-        /// <returns></returns>
+        /// <param name="index">
+        /// The name of the store and the index to iterate over to retrieve the records. 
+        /// Leave <see cref="StoreIndexQuery{TInput}.IndexName"/> null if you want to iterate over the primary key of the object store.
+        /// <see cref="StoreIndexQuery{TInput}.QueryValue"/> and <see cref="StoreIndexQuery{TInput}.AllMatching"/> are ignored.
+        /// </param>
         public async Task<List<TResult>> GetPaginatedRecords<TResult>(StoreIndexQuery<object> index, int offset, int count)
         {
+            Console.WriteLine("c# getpaginatedrecords");
             await EnsureDbOpen();
             try
             {
+                Console.WriteLine("c# getpaginatedrecords calling js");
                 var results = await CallJavascript<List<TResult>>(DbFunctions.GetPaginatedRecords, index, offset, count);
+                Console.WriteLine($"c# getpaginatedrecords js ended, {((results is null) ? "got null" : "got " + results.Count.ToString())}");
 
                 RaiseNotification(IndexDBActionOutCome.Successful, $"Retrieved {results.Count} records from {index.Storename}");
 
@@ -197,9 +203,9 @@ namespace TG.Blazor.IndexedDB
             catch (JSException jse)
             {
                 RaiseNotification(IndexDBActionOutCome.Failed, jse.Message);
+                Console.WriteLine("c# getpaginatedrecords ended with jsexception");
                 return default;
             }
-
         }
 
         /// <summary>

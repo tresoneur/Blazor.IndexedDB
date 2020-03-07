@@ -1,17 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
+    <id>SpotifyService.IndexedDB</id>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <DefaultItemExcludes>${DefaultItemExcludes};dist\**;node_modules\**</DefaultItemExcludes>
-    <AssemblyName>TG.Blazor.IndexedDB</AssemblyName>
-    <RootNamespace>TG.Blazor.IndexedDB</RootNamespace>
-    <Version>1.5.0-preview</Version>
+    <AssemblyName>SpotifyService.IndexedDB</AssemblyName>
+    <RootNamespace>SpotifyService.IndexedDB</RootNamespace>
+    <Version>1.5.5-preview</Version>
     <Authors>William Tulloch, tresoneur</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/wtulloch/Blazor.IndexedDB</RepositoryUrl>
+    <RepositoryUrl>https://github.com/tresoneur/Blazor.IndexedDB</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <Description>A Blazor library for interacting with IndexedDB</Description>
     <Copyright>Copyright 2019 William Tulloch, 2020 tresoneur</Copyright>

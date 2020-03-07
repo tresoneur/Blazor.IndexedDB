@@ -1,4 +1,4 @@
-﻿namespace TG.Blazor.IndexedDB
+﻿namespace SpotifyService.IndexedDB
 {
     /// <summary>
     /// Defines an Index for a given object store.
