@@ -105,30 +105,38 @@ export class IndexedDbManager {
 
         const store = tx.objectStore(searchData.storename);
 
-        console.log("SpotifyService.IndexedDB: Store indexname: " + searchData.indexName + "is null: " + (searchData.indexName === null ? "true" : "false") + "is kinda null: " + (searchData.indexName == null ? "true" : "false"));
-
         ((searchData.indexName !== null) ? store.index(searchData.indexName) : store)
             .iterateCursor(cursor => {
                 if (!cursor) {
-                    console.log("!cursor");
                     return;
                 }
 
-                if (offset <= position && position < (offset + count)) {
-                    console.log("position: " + position); console.log(cursor.value);
+                if (position < offset) {
+                    position += offset;
+                    cursor.advance(offset);
+                }
+                else if (offset <= position && position < (offset + count)) {
                     results.push(cursor.value);
+                    ++position;
+                    cursor.continue();
                 }
                 else if (position >= (offset + count)) {
                     return;
                 }
-
-                ++position;
-                cursor.continue();
             });
 
         await tx.complete;
 
         return results;
+    }
+
+    public getRecordCount = async (storeName: string): Promise<number> => {
+        const tx = this.getTransaction(this.dbInstance, storeName, 'readonly');
+
+        const count = await tx.objectStore(storeName).count();
+        await tx.complete;
+        
+        return count;
     }
 
     public clearStore = async (storeName: string): Promise<string> => {

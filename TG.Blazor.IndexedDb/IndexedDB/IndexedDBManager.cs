@@ -188,13 +188,11 @@ namespace SpotifyService.IndexedDB
         /// </param>
         public async Task<List<TResult>> GetPaginatedRecords<TResult>(StoreIndexQuery<object> index, int offset, int count)
         {
-            Console.WriteLine("c# getpaginatedrecords");
             await EnsureDbOpen();
+
             try
             {
-                Console.WriteLine("c# getpaginatedrecords calling js");
                 var results = await CallJavascript<List<TResult>>(DbFunctions.GetPaginatedRecords, index, offset, count);
-                Console.WriteLine($"c# getpaginatedrecords js ended, {((results is null) ? "got null" : "got " + results.Count.ToString())}");
 
                 RaiseNotification(IndexDBActionOutCome.Successful, $"Retrieved {results.Count} records from {index.Storename}");
 
@@ -203,7 +201,28 @@ namespace SpotifyService.IndexedDB
             catch (JSException jse)
             {
                 RaiseNotification(IndexDBActionOutCome.Failed, jse.Message);
-                Console.WriteLine("c# getpaginatedrecords ended with jsexception");
+                return default;
+            }
+        }
+
+        /// <summary>
+        /// Gets the number of records in the given store.
+        /// </summary>
+        public async Task<int> GetCount(string storeName)
+        {
+            await EnsureDbOpen();
+
+            try
+            {
+                var result = await CallJavascript<int>(DbFunctions.GetCount, storeName);
+
+                RaiseNotification(IndexDBActionOutCome.Successful, $"Retrieved record count from {storeName}");
+
+                return result;
+            }
+            catch (JSException jse)
+            {
+                RaiseNotification(IndexDBActionOutCome.Failed, jse.Message);
                 return default;
             }
         }
