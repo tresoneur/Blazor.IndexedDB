@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpotifyService.IndexedDB
+namespace Caerostris.Services.Spotify.IndexedDB
 {
 
     public class IndexedDBNotificationArgs : EventArgs

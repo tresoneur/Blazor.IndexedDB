@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SpotifyService.IndexedDB
+namespace Caerostris.Services.Spotify.IndexedDB
 {
     /// <summary>
     /// Used to define the database and associated stores

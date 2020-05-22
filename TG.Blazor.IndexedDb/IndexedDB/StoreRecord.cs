@@ -1,4 +1,4 @@
-﻿namespace SpotifyService.IndexedDB
+﻿namespace Caerostris.Services.Spotify.IndexedDB
 {
     /// <summary>
     /// This class is used when adding or updating a record.

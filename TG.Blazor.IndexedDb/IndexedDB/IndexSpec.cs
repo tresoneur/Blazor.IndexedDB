@@ -1,4 +1,4 @@
-﻿namespace SpotifyService.IndexedDB
+﻿namespace Caerostris.Services.Spotify.IndexedDB
 {
     /// <summary>
     /// Defines an Index for a given object store.

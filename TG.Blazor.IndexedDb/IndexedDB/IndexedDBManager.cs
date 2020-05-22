@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 
-namespace SpotifyService.IndexedDB
+namespace Caerostris.Services.Spotify.IndexedDB
 {
     /// <summary>
     /// Provides functionality for accessing IndexedDB from Blazor application

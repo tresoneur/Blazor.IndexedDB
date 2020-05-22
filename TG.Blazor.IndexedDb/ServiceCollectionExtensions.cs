@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace SpotifyService.IndexedDB
+namespace Caerostris.Services.Spotify.IndexedDB
 {
     public static class ServiceCollectionExtensions
     {

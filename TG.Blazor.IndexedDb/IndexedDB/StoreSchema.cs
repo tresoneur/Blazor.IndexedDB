@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SpotifyService.IndexedDB
+namespace Caerostris.Services.Spotify.IndexedDB
 {
     /// <summary>
     /// Defines a store to add to database

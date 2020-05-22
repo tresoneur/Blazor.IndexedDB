@@ -1,4 +1,4 @@
-﻿namespace SpotifyService.IndexedDB
+﻿namespace Caerostris.Services.Spotify.IndexedDB
 {
     /// <summary>
     /// Constants defining the Javascript functions that can be called.

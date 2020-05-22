@@ -1,5 +1,5 @@
 ﻿
-namespace SpotifyService.IndexedDB
+namespace Caerostris.Services.Spotify.IndexedDB
 {
     public class DbInformation
     {

@@ -1,4 +1,4 @@
-﻿namespace SpotifyService.IndexedDB
+﻿namespace Caerostris.Services.Spotify.IndexedDB
 {
     /// <summary>
     /// Class used for running an index query.
